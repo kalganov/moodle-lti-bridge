@@ -1,4 +1,4 @@
-# Adaptive-Bridge
+# Adaptive Learning Toolbox
 
 ### Настройка Moodle Provider
 
