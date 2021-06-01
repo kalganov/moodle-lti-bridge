@@ -1,5 +1,12 @@
 # Adaptive Learning Toolbox
 
+### Дополнительные инструменты
+
+1. Инструмент анализа качества тестовых материалов - https://github.com/dim3662/ColibrateWithLti
+2. Инструмент построения компетентностной модели курса
+3. Визуализатор образовательных достижений
+
+
 ### Настройка Moodle Provider
 
 https://youtube.com/playlist?list=PLYDrQMWz8b9UvvjgTuHHDqwZ4s0ajU617
