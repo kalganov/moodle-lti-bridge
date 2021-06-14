@@ -51,13 +51,3 @@ gunicorn --certfile=/config/config/certs/localhost.crt --keyfile=/config/config/
 * docker-compose kill web
 * docker-compose rm web
 * docker-compose up -d
-
-
-### TODO
-
-1. Сделать правильную организацию пакетов\модулей
-2. Сделать фильтрацию на базе, при невозможности сделать при помощи py2neo отказаться от него
-3. Написать тесты
-4. Сделать видео про IRT 
-5. Привести в порядок settings.py
-6. Синхронизация пользователей в графе и мудле

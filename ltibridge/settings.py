@@ -38,6 +38,7 @@ DEBUG = True
 
 # Temporary solution due to integration via ip address instead of domain name and https
 SERVER_URL = get_env_value('SERVER_URL')
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Neo4J
 host = get_env_value('NEO4J_HOST')
@@ -89,11 +90,13 @@ PYLTI_CONFIG = {
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
-SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_SAMESITE = 'None'
+# TODO UNCOMMENT ON SERVER
+# SESSION_COOKIE_SECURE = 'True'
 
 # Application definition
-
 INSTALLED_APPS = [
+    'corsheaders',
     'bridge',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,11 +126,14 @@ LOGGING = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'ltibridge.urls'
 

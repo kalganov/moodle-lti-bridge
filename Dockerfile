@@ -11,9 +11,9 @@ ENV PYTHONUNBUFFERED 1
 # install dependencies
 RUN apk add --update --no-cache g++ gcc libxslt-dev libxml2-dev libxslt-dev py-cryptography musl-dev libffi-dev openssl-dev python3-dev
 RUN pip install --upgrade pip
-RUN pip install cryptography -vvv --no-binary=cryptography
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
+RUN rm -rf neo4j

@@ -1,6 +1,6 @@
 {% load static %}
 {% load bootstrap3 %}
-<html>
+<html lang="ru">
 <head>
     <title>Content source</title>
 </head>
@@ -31,7 +31,7 @@
     (function ($) {
         $(function () {
             // LTI launch form auto-submission:
-            var $element = $("#ltiLaunchForm");
+            const $element = $("#ltiLaunchForm");
             $("#progress").append("<p>Test<p>");
             if ($element) {
                 $element.submit();
@@ -43,9 +43,6 @@
 
     $('#dummyframe').on('load', function () {
         $.get("{{ grade_url }}", (data) => {
-            console.log('grade');
-            console.log(data);
-
             if (typeof data.grade != "undefined") {
                 parent.postMessage("activity_complete", "*")
             }

@@ -1,10 +1,13 @@
 import logging
+import uuid
 
 from py2neo.ogm import Model, Property, RelatedFrom, RelatedTo
 
+from bridge.constants import *
 from ltibridge.settings import graph
 
 logger = logging.getLogger(__name__)
+
 
 class Topic(Model):
     __primarykey__ = "label"
@@ -51,6 +54,7 @@ class User(Model):
     first_name = Property("first_name")
     last_name = Property("last_name")
     email = Property("email")
+    consumer_key = Property("consumer_key")
     knows = RelatedTo("SubDescriptor", "know")
     did = RelatedTo("Task", "did")
 
@@ -60,6 +64,7 @@ def create_user(user_data):
     user.first_name = user_data['lis_person_name_given']
     user.last_name = user_data['lis_person_name_family']
     user.email = user_data['lis_person_contact_email_primary']
+    user.consumer_key = str(uuid.uuid4())
     graph.push(user)
 
 
@@ -81,30 +86,23 @@ def get_source(host):
 
 def find_tasks(email, topic):
     user = User.match(graph, email).first()
+    logger.info("Found user: " + str(user))
 
     topic = Topic.match(graph, topic).first()
+    logger.info("Found topic: " + str(topic))
 
     if not topic:
         return None
 
-    tasks = flat_map(lambda x: x.tasks, topic.sub_descriptors)
+    tasks = set(flat_map(lambda x: x.tasks, topic.sub_descriptors))
+    logger.info("Tasks for this topic: " + str(tasks))
 
     return set(filter(lambda x: x not in user.did, tasks))
 
 
-def find_target_descriptor(topic):
-    topic = Topic.match(graph, topic).first()
-    return list(filter(lambda x: topic.sub_descriptors.get(x, 'target') is True, topic.sub_descriptors))
+def get_topic(topic):
+    return Topic.match(graph, topic).first()
 
 
 def flat_map(f, xs):
     return [y for ys in xs for y in f(ys)]
-
-
-def get_results(email, topic):
-    user = get_user(email)
-
-    topic = Topic.match(graph, topic).first()
-
-    return {sd.label: user.knows.get(sd, 'weight') if not user.knows.get(sd, 'weight') is None else 0 for sd in
-            topic.sub_descriptors}

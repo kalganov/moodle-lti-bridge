@@ -1,12 +1,17 @@
 {% load static %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
-<html>
+<html lang="ru">
 <body>
 <div class="container" style="height: 600px">
     <div class="row">
         <div class="col-md-11">
-            <p>You have finished this module</p>
+            <p>Вы научились:</p>
+            {% for descriptor in descriptors %}
+                <p>{{ descriptor.label }}:</p>
+                <p style="padding-left: 5%">thi: {{ descriptor.thi }}</p>
+                <p style="padding-left: 5%">error - {{ descriptor.error }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
