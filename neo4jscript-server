@@ -28,8 +28,8 @@ CREATE
 (n12)-[:sub_of]->(n4)
 
 CREATE (taskSource:TaskSource {label: 'computermath.ru', api_url: 'http://moodle:8080/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
-CREATE (taskSource2:TaskSource {label: 'open.etu.ru', api_url: 'http://moodle:8080/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
-CREATE (taskSource3:TaskSource {label: 'vec.etu.ru', api_url: 'http://moodle:8080/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
+CREATE (taskSource2:TaskSource {label: 'open.etu.ru', api_url: 'https://194.85.169.105:80/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
+CREATE (taskSource3:TaskSource {label: 'vec.etu.ru', api_url: 'https://194.85.169.105:80/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
 CREATE (taskSourceServer:TaskSource {label: 'localhost', api_url: 'https://194.85.169.105:80/webservice/rest/server.php?moodlewsrestformat=json&wstoken={0}&wsfunction={1}', token: '7be25066e116fb2a4cf12d9441f2675c', key: 'test'})
 
 CREATE (task1:Task {label: 'Структуры1', launch_url: 'https://194.85.169.105:80/enrol/lti/tool.php?id=2', quiz_id: '4', secret: '3kyGn0yqqH9UsjqzM71kfj1Bm3niApJR'})

@@ -92,7 +92,7 @@ PYLTI_CONFIG = {
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = 'None'
 # TODO UNCOMMENT ON SERVER
-# SESSION_COOKIE_SECURE = 'True'
+SESSION_COOKIE_SECURE = 'True'
 
 # Application definition
 INSTALLED_APPS = [
